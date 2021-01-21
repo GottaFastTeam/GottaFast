@@ -20,7 +20,7 @@ const messages = [{
 const players = []
 
 io.on('connection', socket => {
-  console.log('Socket.io client connected');
+  console.log('Socket.io client connected!');
 
   // Socket greating message for all players
   socket.emit('init', { messages, players })
