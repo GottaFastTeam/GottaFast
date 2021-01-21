@@ -14,7 +14,7 @@ const routes = [
     component: WinnerPage
   },
   {
-    path: '/play',
+    path: '/playGame',
     name: 'PlayPage',
     component: PlayPage
   },
