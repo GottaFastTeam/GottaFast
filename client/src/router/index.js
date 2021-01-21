@@ -4,6 +4,7 @@ import WinnerPage from '../views/WinnerPage.vue'
 import PlayPage from '../views/PlayPage.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
