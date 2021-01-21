@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
+=======
+    <div id="nav">
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/winner">winner</router-link> -->
+    </div>
+>>>>>>> 5d0f32e9fb86463030f953a30861964b9478dd61
     <router-view/>
   </div>
 </template>

@@ -40,6 +40,7 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style scoped>
 
   @import url('https://fonts.googleapis.com/css?family=Numans');
@@ -124,3 +125,8 @@ export default {
   margin-left: 4px;
   }
   </style>
+=======
+<style>
+
+</style>
+>>>>>>> 5d0f32e9fb86463030f953a30861964b9478dd61
