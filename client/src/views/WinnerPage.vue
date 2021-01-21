@@ -4,7 +4,7 @@
           <img src="../assets/winner1.gif" id="imageWinner1">
           <h1 id="winnerName">NAME</h1>
           <div class="container">
-            <a href="#" class="button">Play Again</a>
+            <a @click="play" class="button">Play Again</a>
           </div>
       </div>
       <img src="../assets/winner2.gif" id="imageWinner2">
@@ -13,8 +13,9 @@
 </template>
 
 <script>
-export default {
 
+export default {
+  name: 'WinnerPage'
 }
 </script>
 
@@ -71,6 +72,7 @@ export default {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    cursor: pointer;
   }
   .button:after {
     content: "";

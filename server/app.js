@@ -9,6 +9,9 @@ const messages = [{
     message: 'WELCOME TO GOTTA FAST : THE ULTIMATE SPEED CLICKER'
 }]
 
+// list of players
+const players = []
+
 // example data object player
 // payload = {
 //   username: 'nanda',
@@ -16,13 +19,11 @@ const messages = [{
 //   score: 0
 // }
 
-// list of players
-const players = []
-
 io.on('connection', socket => {
   console.log('Socket.io client connected!');
 
   // Socket greating message for all players
+
   socket.emit('init', { messages, players })
 
   // Socket listen for new player
@@ -74,5 +75,5 @@ io.on('connection', socket => {
 })
 
 server.listen(port,()=>{
-    console.log(`listen to http://localhost:3000`);
+    console.log(`listen to http://localhost:${port}`);
 });
