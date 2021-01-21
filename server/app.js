@@ -31,15 +31,14 @@ io.on('connection', socket => {
     // push new player to list of players
     if (players.length < 4) {
       players.push(payload)
+      // Socket send data new player to only client seeder for greating
+      socket.emit('serverGreeting', payload);
+
+      // Socket send to all player about new  player
+      io.emit('messageNewPlayer', players);
     }else{
       socket.emit('fullRoom', 'Room full!');
     }
-
-    // Socket send data new player to only client seeder for greating
-    socket.emit('serverGreeting', payload);
-
-    // Socket send to all player about new  player
-    io.emit('messageNewPlayer', players);
   })
 
   // Socket for listen updated score
