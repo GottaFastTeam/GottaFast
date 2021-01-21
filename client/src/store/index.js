@@ -17,12 +17,18 @@ export default new Vuex.Store({
     },
     SOCKET_messageNewPlayer (state, payload) {
       state.players = payload
+    },
+    SOCKET_updatedPlayerStatus (state, payload) {
+      state.players = payload
+    },
+    setUsername (state, payload) {
+      state.username = payload
     }
   },
   actions: {
-    SOCKET_serverGreeting (payload) {
+    SOCKET_serverGreeting ({ commit }, payload) {
+      commit('setUsername', payload.username)
       router.push({ name: 'Dashboard' })
-      console.log(payload)
     },
     SOCKET_fullRoom (payload) {
       console.log(payload)

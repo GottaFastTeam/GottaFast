@@ -44,7 +44,7 @@ io.on('connection', socket => {
   // Socket for listen updated score
   socket.on('updateScorePlayer', function(payload) {
     // find user updated score
-    const findPlayer = players.filter(el => el.username === payload.name);
+    const findPlayer = players.filter(el => el.username === payload.username);
 
     // update score player
     findPlayer[0].score = payload.score;
@@ -56,7 +56,7 @@ io.on('connection', socket => {
   // Socket for listen update status
   socket.on('updateStatus', function(payload) {
     // find user updated score
-    const findPlayer = players.filter(el => el.username === payload.name);
+    const findPlayer = players.filter(el => el.username === payload.username);
 
     // update score player
     findPlayer[0].status = payload.status;
@@ -68,7 +68,7 @@ io.on('connection', socket => {
   // Socket reset player attributes
   socket.on('resetGame', function(payload) {
     // make new array updated data
-    const findPlayer = players.filter(el => el.username === payload.name);
+    const findPlayer = players.filter(el => el.username === payload.username);
     findPlayer[0].status = 'idle';
     findPlayer[0].score = 0;
 
