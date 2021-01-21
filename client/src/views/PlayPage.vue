@@ -4,7 +4,7 @@
       <img src="../assets/winner4.gif" id="seekImg1">
       <img src="../assets/winner4.gif" id="seekImg2">
       <div id="imageBox">
-        <img src="../assets/kecoa.png" alt="">
+        <img src="../assets/kecoa.png" alt="" @click="play">
       </div>
       <div id="scoreBox">
         <h3>SCORE</h3>
@@ -18,8 +18,21 @@
 </template>
 
 <script>
-export default {
+import useSound from 'vue-use-sound'
+import oof from '../assets/Music/click-oof.mp3'
 
+export default {
+  name: 'Home',
+  components: {
+  },
+  methods: {
+  },
+  setup () {
+    const [play] = useSound(oof)
+    return {
+      play
+    }
+  }
 }
 </script>
 

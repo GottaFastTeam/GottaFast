@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="jumbotron">
       <h1>Gotta Fast : The Ultimated Speed Clicker</h1>
-      <form>
+      <form @submit.prevent="sendUsername">
         <div class="form-group">
           <label for="username">Username</label>
           <input v-model="user" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
