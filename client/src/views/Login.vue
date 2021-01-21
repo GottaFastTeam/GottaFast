@@ -5,7 +5,7 @@
       <form>
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
+          <input v-model="user" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -15,7 +15,14 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      user: ''
+    }
+  },
+  connect: function () {
+    console.log('socket connected')
+  }
 }
 </script>
 
