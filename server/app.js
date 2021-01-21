@@ -29,7 +29,11 @@ io.on('connection', socket => {
   // Socket listen for new player
   socket.on('newPlayers', function(payload){
     // push new player to list of players
-    players.push(payload)
+    if (players.length < 4) {
+      players.push(payload)
+    }else{
+      socket.emit('fullRoom', 'Room full!');
+    }
 
     // Socket send data new player to only client seeder for greating
     socket.emit('serverGreeting', payload);
