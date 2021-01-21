@@ -33,6 +33,13 @@ export default {
         )
       } else {
         this.$socket.emit('newPlayers', { username: this.username, score: 0, status: 'idle' })
+        if (this.players.length < 4) {
+          Swal.fire(
+            'Success!',
+            'Yey, you play',
+            'success'
+          )
+        }
       }
     }
   },
@@ -42,6 +49,7 @@ export default {
       this.welcoming = payload.messages[0].message
     },
     serverGreeting (payload) {
+      this.$router.push({ name: 'Dashboard' })
       console.log(payload)
     },
     messageNewPlayer (payload) {
