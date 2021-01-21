@@ -1,17 +1,24 @@
 <template>
-  <div>
-   <h1>List Player</h1>
+  <div class="mt-5">
+   <h1 class="text-center">List Player</h1>
       <div class="card">
-        <CardUser />
+        <div class="card-group " width='350px'>
+        <CardUser
+          v-for="(player, i) in players"
+          :key="i"
+          :player="player"
+        />
       </div>
+    </div>
   </div>
 </template>
 
 <script>
-import CardUser from '../components/CardUser.vue'
+import { mapState } from 'vuex'
+import CardUser from '../components/CardUser'
 export default {
-  data () {
-
+  computed: {
+    ...mapState(['players'])
   },
   components: {
     CardUser

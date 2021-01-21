@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard text-center mt-5">
     <div class="jumbotron">
       <h2 class="mb-5">{{welcoming}}</h2>
       <form @submit.prevent="sendUsername">

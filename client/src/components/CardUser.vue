@@ -1,46 +1,24 @@
 <template>
-  <div class="card-group " width='350px'>
-        <div class="card">
-            <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">User 01</h5>
-              <p class="card-text">Ready</p>
-              <a href="#" class="btn btn-primary">Leave</a>
-            </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
-          <div class="card-body">
-              <h5 class="card-title">User 01</h5>
-              <p class="card-text">Idle</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">User 01</h5>
-            <p class="card-text">Idle</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">User 01</h5>
-            <p class="card-text">Idle</p>
-          </div>
-        </div>
-  </div>
+<div class="mycard text-center">
+    <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{player.username}}</h5>
+      <p class="card-text">{{player.status}}</p>
+      <a href="#" class="btn btn-primary">Leave</a>
+    </div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'CardUser'
+  name: 'CardUser',
+  props: ['player']
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .card {
+  .mycard {
     margin: 10px;
     height: 350px;
     min-width: 100px;
