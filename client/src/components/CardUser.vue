@@ -4,6 +4,7 @@
             <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">User 01</h5>
+              <p class="card-text">Ready</p>
               <a href="#" class="btn btn-primary">Leave</a>
             </div>
         </div>
@@ -11,18 +12,21 @@
           <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
           <div class="card-body">
               <h5 class="card-title">User 01</h5>
+              <p class="card-text">Idle</p>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">User 01</h5>
+            <p class="card-text">Idle</p>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/50cff0e0-1005-487c-8705-c04f919c3964" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">User 01</h5>
+            <p class="card-text">Idle</p>
           </div>
         </div>
   </div>
@@ -52,6 +56,12 @@ export default {
 
   .card-title {
     color: #f7b801;
+  }
+
+  .card-text {
+    color: #f7b801;
+    border: 1px  #f3f8f2 solid;
+    border-radius: 10px;
   }
 
   .btn-primary {
