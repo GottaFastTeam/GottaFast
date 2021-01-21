@@ -94,8 +94,8 @@ export default {
   }
   #scoreBox p {
     width: 200px;
-    height: 30px;
-    padding: 4px;
+    height: 40px;
+    padding: 4px 4px 4px 4px;
     margin-left: 10%;
     border-radius: 25px;
     margin-top: 20px;
@@ -105,9 +105,10 @@ export default {
     font-size: 25px;
   }
   #scoreBox h3 {
+    font-size: 20px;
     margin-left: 30%;
     padding: 5px;
-    margin-top: -20px;
+    margin-top: -15px;
     width: 100px;
     height: 30px;
     border-radius: 25px;

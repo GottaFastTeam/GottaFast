@@ -4,7 +4,8 @@ const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
 const cors = require('cors')
 
-app.use(cors())
+
+app.use(cors());
 
 // iniital message
 const messages = [{
