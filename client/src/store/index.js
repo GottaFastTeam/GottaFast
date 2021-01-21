@@ -5,10 +5,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    players: [],
+    user: '',
+    clickCount: '',
+    score: ''
   },
   mutations: {
+    setPlayers (stage, payload) {
+      stage.players = payload
+    }
   },
   actions: {
+    SOCKET_init (context, payload) {
+      context.commit('setPlayers', payload)
+    }
   },
   modules: {
   }
