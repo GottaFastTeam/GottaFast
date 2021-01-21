@@ -4,15 +4,25 @@
     <div class="card-body">
       <h5 class="card-title">{{player.username}}</h5>
       <p class="card-text">{{player.status}}</p>
-      <a href="#" class="btn btn-primary">Leave</a>
+      <a v-show="player.username === username" v-if="player.status === 'idle'" @click.prevent="updateStatus" type="button" class="btn btn-sm btn-warning">Ready</a>
+      <a type="button" class="btn btn-sm btn-danger text-white ml-1">Leave</a>
     </div>
 </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'CardUser',
-  props: ['player']
+  props: ['player'],
+  computed: {
+    ...mapState(['username'])
+  },
+  methods: {
+    updateStatus () {
+      this.$socket.emit('updateStatus', { username: this.player.username, status: 'ready' })
+    }
+  }
 }
 </script>
 
@@ -40,10 +50,5 @@ export default {
     color: #f7b801;
     border: 1px  #f3f8f2 solid;
     border-radius: 10px;
-  }
-
-  .btn-primary {
-    background: #f3f8f2;
-    color:  #3581b8;
   }
 </style>

@@ -18,7 +18,7 @@ import { mapState } from 'vuex'
 import CardUser from '../components/CardUser'
 export default {
   computed: {
-    ...mapState(['players'])
+    ...mapState(['players', 'username'])
   },
   components: {
     CardUser

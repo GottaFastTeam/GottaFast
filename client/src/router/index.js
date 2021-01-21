@@ -4,6 +4,7 @@ import WinnerPage from '../views/WinnerPage.vue'
 import PlayPage from '../views/PlayPage.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -11,12 +12,14 @@ const routes = [
   {
     path: '/winner',
     name: 'WinnerPage',
-    component: WinnerPage
+    component: WinnerPage,
+    meta: { requiresAuth: true }
   },
   {
     path: '/playGame',
     name: 'PlayPage',
-    component: PlayPage
+    component: PlayPage,
+    meta: { requiresAuth: true }
   },
   {
     path: '/',
@@ -26,7 +29,8 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -42,6 +46,19 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const auth = store.state.username
+    if (!auth) {
+      next({ name: 'Login' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

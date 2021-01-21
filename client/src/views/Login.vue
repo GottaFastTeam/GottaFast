@@ -23,7 +23,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['welcoming', 'players'])
+    ...mapState(['welcoming', 'players', 'username'])
   },
   methods: {
     sendUsername () {
@@ -43,6 +43,11 @@ export default {
           )
         }
       }
+    }
+  },
+  created () {
+    if (this.username) {
+      this.$router.push({ name: 'Dashboard' })
     }
   }
 }
