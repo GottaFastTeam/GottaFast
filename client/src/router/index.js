@@ -1,32 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import WinnerPage from '../views/WinnerPage.vue'
-import PlayPage from '../views/PlayPage.vue'
-import Login from '../views/Login.vue'
-import Dashboard from '../views/Dashboard.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/winner',
-    name: 'WinnerPage',
-    component: WinnerPage
-  },
-  {
-    path: '/playGame',
-    name: 'PlayPage',
-    component: PlayPage
-  },
-  {
     path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'Home',
+    component: Home
   },
   {
     path: '/about',
