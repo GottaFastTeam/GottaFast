@@ -3,12 +3,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import WinnerPage from '../views/WinnerPage.vue'
 import PlayPage from '../views/PlayPage.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/play',
     name: 'Home',
     component: Home
   },
@@ -21,6 +22,11 @@ const routes = [
     path: '/play',
     name: 'PlayPage',
     component: PlayPage
+  },
+  }
+    path: '/',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/about',
