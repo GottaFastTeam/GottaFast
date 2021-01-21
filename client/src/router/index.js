@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import WinnerPage from '../views/WinnerPage.vue'
+import PlayPage from '../views/PlayPage.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/winner',
     name: 'WinnerPage',
     component: WinnerPage
+  },
+  {
+    path: '/play',
+    name: 'PlayPage',
+    component: PlayPage
   },
   {
     path: '/about',
