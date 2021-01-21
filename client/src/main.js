@@ -16,5 +16,9 @@ Vue.use(new VueSocketIO({
 new Vue({
   router,
   store,
+  mounted () {
+    const audio = new Audio('./assets/Music/Ongoing.mp3')
+    audio.play()
+  },
   render: h => h(App)
 }).$mount('#app')
