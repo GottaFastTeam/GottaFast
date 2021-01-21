@@ -22,6 +22,7 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -34,29 +35,11 @@ export default {
   },
   connect: function () {
     console.log('socket connected')
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import useSound from 'vue-use-sound'
-import oof from '../assets/Music/click-oof.mp3'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  },
-  methods: {
-  },
-  setup () {
-    const [play] = useSound(oof)
-    return {
-      play
-    }
   }
 }
 </script>
 
 <style scoped>
-
   @import url('https://fonts.googleapis.com/css?family=Numans');
   h3{
     text-align: left;
@@ -138,4 +121,4 @@ export default {
   .links a{
   margin-left: 4px;
   }
-  </style>
+</style>
