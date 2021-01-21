@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="jumbotron">
-      <h2 class="mb-5">{{welcoming}}</h2>
+      <h2 class="mb-5">{{Welcoming}}</h2>
       <form @submit.prevent="sendUsername">
         <div class="form-group">
           <input v-model="username" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
@@ -19,8 +19,12 @@ export default {
   data () {
     return {
       username: '',
-      welcoming: '',
       players: []
+    }
+  },
+  computed: {
+    Welcoming () {
+      return this.$store.state.welcoming
     }
   },
   methods: {
@@ -33,15 +37,19 @@ export default {
         )
       } else {
         this.$socket.emit('newPlayers', { username: this.username, score: 0, status: 'idle' })
+        if (this.players.length < 4) {
+          Swal.fire(
+            'Success!',
+            'Yey, you play',
+            'success'
+          )
+        }
       }
     }
   },
   sockets: {
-    init (payload) {
-      console.log(payload)
-      this.welcoming = payload.messages[0].message
-    },
     serverGreeting (payload) {
+      this.$router.push({ name: 'dashboard' })
       console.log(payload)
     },
     messageNewPlayer (payload) {

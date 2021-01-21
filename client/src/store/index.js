@@ -8,16 +8,17 @@ export default new Vuex.Store({
     players: [],
     user: '',
     clickCount: '',
-    score: ''
+    score: '',
+    welcoming: ''
   },
   mutations: {
-    setPlayers (stage, payload) {
-      stage.players = payload
+    setWellcoming (stage, payload) {
+      stage.welcoming = payload
     }
   },
   actions: {
     SOCKET_init (context, payload) {
-      context.commit('setPlayers', payload)
+      context.commit('setWellcoming', payload.messages[0].message)
     }
   },
   modules: {
