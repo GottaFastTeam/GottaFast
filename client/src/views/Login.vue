@@ -1,11 +1,10 @@
 <template>
   <div class="dashboard">
     <div class="jumbotron">
-      <h1>Gotta Fast : The Ultimated Speed Clicker</h1>
+      <h2 class="mb-5">{{welcoming}}</h2>
       <form @submit.prevent="sendUsername">
         <div class="form-group">
-          <label for="username">Username</label>
-          <input v-model="user" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
+          <input v-model="username" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -14,14 +13,48 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   data () {
     return {
-      user: ''
+      username: '',
+      welcoming: '',
+      players: []
     }
   },
-  connect: function () {
-    console.log('socket connected')
+  methods: {
+    sendUsername () {
+      if (this.username.length === 0) {
+        Swal.fire(
+          'Warning!',
+          'Please input username',
+          'warning'
+        )
+      } else {
+        this.$socket.emit('newPlayers', { username: this.username, score: 0, status: 'idle' })
+      }
+    }
+  },
+  sockets: {
+    init (payload) {
+      console.log(payload)
+      this.welcoming = payload.messages[0].message
+    },
+    serverGreeting (payload) {
+      console.log(payload)
+    },
+    messageNewPlayer (payload) {
+      this.players = payload
+      console.log(payload)
+    },
+    fullRoom (payload) {
+      Swal.fire(
+        'Warning!',
+        `${payload}`,
+        'warning'
+      )
+    }
   }
 }
 </script>
