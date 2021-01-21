@@ -4,7 +4,7 @@
       <h2 class="mb-5">{{welcoming}}</h2>
       <form @submit.prevent="sendUsername">
         <div class="form-group">
-          <input v-model="username" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
+          <input v-model="name" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -13,26 +13,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
 
 export default {
   data () {
     return {
-      username: '',
-      welcoming: '',
-      players: []
+      name: ''
     }
+  },
+  computed: {
+    ...mapState(['welcoming', 'players'])
   },
   methods: {
     sendUsername () {
-      if (this.username.length === 0) {
+      if (this.name.length === 0) {
         Swal.fire(
           'Warning!',
           'Please input username',
           'warning'
         )
       } else {
-        this.$socket.emit('newPlayers', { username: this.username, score: 0, status: 'idle' })
+        this.$socket.emit('newPlayers', { username: this.name, score: 0, status: 'idle' })
         if (this.players.length < 4) {
           Swal.fire(
             'Success!',
@@ -41,27 +43,6 @@ export default {
           )
         }
       }
-    }
-  },
-  sockets: {
-    init (payload) {
-      console.log(payload)
-      this.welcoming = payload.messages[0].message
-    },
-    serverGreeting (payload) {
-      this.$router.push({ name: 'Dashboard' })
-      console.log(payload)
-    },
-    messageNewPlayer (payload) {
-      this.players = payload
-      console.log(payload)
-    },
-    fullRoom (payload) {
-      Swal.fire(
-        'Warning!',
-        `${payload}`,
-        'warning'
-      )
     }
   }
 }
