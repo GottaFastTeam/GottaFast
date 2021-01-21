@@ -1,20 +1,17 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const port = process.env.PORT || 3000;
-const cors = require('cors')
-
-
-app.use(cors());
+const port = 3000;
 
 // iniital message
 const messages = [{
-  name: 'GAME MASTER',
-  message: 'WELCOME TO GOTTA FAST : THE ULTIMATE SPEED CLICKER'
+    name: 'GAME MASTER',
+    message: 'WELCOME TO GOTTA FAST : THE ULTIMATE SPEED CLICKER'
 }]
 
 // list of players
 const players = []
+
 // example data object player
 // payload = {
 //   username: 'nanda',
@@ -22,15 +19,15 @@ const players = []
 //   score: 0
 // }
 
-io.on('connection', (socket) => {
-  console.log('Socket.io client connected');
+io.on('connection', socket => {
+  console.log('Socket.io client connected!');
 
   // Socket greating message for all players
 
-  socket.emit('init', { messages, players, leaderboards })
+  socket.emit('init', { messages, players })
 
   // Socket listen for new player
-  socket.on('newPlayers', (payload) => {
+  socket.on('newPlayers', function(payload){
     // push new player to list of players
     players.push(payload)
 
@@ -42,7 +39,7 @@ io.on('connection', (socket) => {
   })
 
   // Socket for listen updated score
-  socket.on('updateScorePlayer', (payload) => {
+  socket.on('updateScorePlayer', function(payload) {
     // find user updated score
     const findPlayer = players.filter(el => el.username === payload.name);
 
@@ -54,7 +51,7 @@ io.on('connection', (socket) => {
   })
 
   // Socket for listen update status
-  socket.on('updateStatus', (payload) => {
+  socket.on('updateStatus', function(payload) {
     // find user updated score
     const findPlayer = players.filter(el => el.username === payload.name);
 
@@ -66,7 +63,7 @@ io.on('connection', (socket) => {
   })
 
   // Socket reset player attributes
-  socket.on('resetGame', (payload) => {
+  socket.on('resetGame', function(payload) {
     // make new array updated data
     const findPlayer = players.filter(el => el.username === payload.name);
     findPlayer[0].status = 'idle';
@@ -77,6 +74,6 @@ io.on('connection', (socket) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log(`listen to port ${port}`);
-})
+server.listen(port,()=>{
+    console.log(`listen to http://localhost:${port}`);
+});
