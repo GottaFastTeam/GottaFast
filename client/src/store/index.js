@@ -14,6 +14,9 @@ export default new Vuex.Store({
   mutations: {
     setWellcoming (stage, payload) {
       stage.welcoming = payload
+    },
+    clickCount (stage, payload) {
+      stage.clickCount = payload
     }
   },
   actions: {

@@ -4,7 +4,7 @@
       <h2 class="mb-5">{{Welcoming}}</h2>
       <form @submit.prevent="sendUsername">
         <div class="form-group">
-          <input v-model="username" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
+          <input v-model="name" type="text" class="form-control" id="username"  placeholder="Enter Your Username !!!">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -13,30 +13,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
 
 export default {
   data () {
     return {
-      username: '',
-      players: []
+      name: ''
     }
   },
   computed: {
-    Welcoming () {
-      return this.$store.state.welcoming
-    }
+    ...mapState(['welcoming', 'players'])
   },
   methods: {
     sendUsername () {
-      if (this.username.length === 0) {
+      if (this.name.length === 0) {
         Swal.fire(
           'Warning!',
           'Please input username',
           'warning'
         )
       } else {
-        this.$socket.emit('newPlayers', { username: this.username, score: 0, status: 'idle' })
+        this.$socket.emit('newPlayers', { username: this.name, score: 0, status: 'idle' })
         if (this.players.length < 4) {
           Swal.fire(
             'Success!',
