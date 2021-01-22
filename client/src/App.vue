@@ -8,8 +8,6 @@ export default {
     if (localStorage.username) {
       this.$store.commit('setUsername', localStorage.username)
       this.$socket.emit('getAllPlayers')
-    } else {
-      this.$router.push({ name: 'Login' })
     }
   }
 }
