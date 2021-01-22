@@ -2,6 +2,16 @@
     <router-view/>
 </template>
 
+<script>
+export default {
+  created () {
+    this.$store.commit('setUsername', localStorage.username)
+    // this.$store.dispatch('SOCKET_serverGreeting', { username: localStorage.username })
+    this.$socket.emit('getAllPlayers')
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Poppins, Helvetica, Arial, sans-serif;
