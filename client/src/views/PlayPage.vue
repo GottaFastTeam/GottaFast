@@ -3,7 +3,7 @@
     <div id="playPageBox">
       <img src="../assets/winner4.gif" id="seekImg1">
       <img src="../assets/winner4.gif" id="seekImg2">
-      <div id="imageBox">
+      <div id="imageBox" @click.prevent="clickMe">
         <img src="../assets/kecoa.png" alt="" @click="play">
       </div>
       <div id="scoreBox" class="text-center">
@@ -24,9 +24,12 @@ export default {
   components: {
   },
   computed: {
-    ...mapState(['players'])
+    ...mapState(['players', 'username'])
   },
   methods: {
+    clickMe () {
+      this.$socket.emit('updateScorePlayer', { username: this.username, score: 10 })
+    }
   },
   setup () {
     const [play] = useSound(oof)
