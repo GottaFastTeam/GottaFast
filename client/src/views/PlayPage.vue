@@ -36,18 +36,6 @@ export default {
   methods: {
     clickMe () {
       this.$socket.emit('updateScorePlayer', { username: this.username, score: 10 })
-    },
-    opponent () {
-      if (this.players.score === 200) {
-        this.image = bahamut
-        return this.image
-      } else if (this.players.score === 150) {
-        this.image = baphomet
-        return this.image
-      } else if (this.players.score === 50) {
-        this.image = slime
-        return this.image
-      }
     }
   },
   setup () {
@@ -61,6 +49,15 @@ export default {
       this.players.forEach(e => {
         if (e.score === 300) {
           this.$router.push({ name: 'WinnerPage' })
+        } else if (e.score === 200) {
+          this.image = bahamut
+          return this.image
+        } else if (e.score === 150) {
+          this.image = baphomet
+          return this.image
+        } else if (e.score === 50) {
+          this.image = slime
+          return this.image
         }
       })
     }
