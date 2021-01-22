@@ -1,7 +1,7 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // iniital message
 const messages = [{
@@ -49,7 +49,7 @@ io.on('connection', socket => {
   socket.on('updateScorePlayer', function(payload) {
     // find user updated score
     const findPlayer = players.filter(el => el.username === payload.username);
-    
+
     // update score player
     findPlayer[0].score += payload.score;
 
@@ -75,7 +75,7 @@ io.on('connection', socket => {
     } else {
       playerready++
     }
-    
+
     io.emit('countPlayerReady', playerready)
   })
 
