@@ -29,7 +29,7 @@ export default {
   },
   watch: {
     userReady () {
-      if (this.userReady === 1) {
+      if (this.userReady === 4) {
         this.$router.push({ name: 'PlayPage' })
       }
     }
