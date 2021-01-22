@@ -35,10 +35,14 @@ io.on('connection', socket => {
       socket.emit('serverGreeting', payload);
 
       // Socket send to all player about new  player
-      io.emit('messageNewPlayer', players);
+      io.emit('updatePlayers', players);
     }else{
       socket.emit('fullRoom', 'Room full!');
     }
+  })
+
+  socket.on('getAllPlayers', function() {
+    io.emit('updatePlayers', players)
   })
 
   // Socket for listen updated score
@@ -50,7 +54,7 @@ io.on('connection', socket => {
     findPlayer[0].score += payload.score;
 
     // Socket send updated score
-    io.emit('updatedScore', players)
+    io.emit('updatePlayers', players)
   })
 
   // Socket for listen update status
@@ -62,11 +66,16 @@ io.on('connection', socket => {
     findPlayer[0].status = payload.status;
 
     // Socket send updated score
-    io.emit('updatedPlayerStatus', players)
+    io.emit('updatePlayers', players)
   })
 
-  socket.on('updatePlayerReady', function(payload) {
-    playerready++
+  socket.on('updatePlayerReady', function() {
+    if (playerready === 4) {
+      playerready = 1
+    } else {
+      playerready++
+    }
+    
     io.emit('countPlayerReady', playerready)
   })
 
@@ -78,7 +87,7 @@ io.on('connection', socket => {
     findPlayer[0].score = 0;
 
     // send reset data player
-    io.emit('resetPlayer', players);
+    io.emit('updatePlayers', players);
   })
 })
 
