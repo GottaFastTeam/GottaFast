@@ -27,7 +27,6 @@ export default {
   name: 'Home',
   data () {
     return {
-      score: '',
       image: kecoa
     }
   },
@@ -48,17 +47,15 @@ export default {
   watch: {
     players () {
       this.players.forEach(e => {
-        console.log(e);
         if (e.score === 300) {
           this.$router.push({ name: 'WinnerPage' })
-        }
-        else if (e.score === 200) {
+        } else if (e.score === 200 && e.username === this.username) {
           this.image = bahamut
           return this.image
-        } else if (e.score === 150) {
+        } else if (e.score === 150 && e.username === this.username) {
           this.image = baphomet
           return this.image
-        } else if (e.score === 50) {
+        } else if (e.score === 50 && e.username === this.username) {
           this.image = slime
           return this.image
         }
