@@ -11,7 +11,7 @@ const messages = [{
 
 // list of players
 const players = []
-
+let playerready = 0
 // example data object player
 // payload = {
 //   username: 'nanda',
@@ -63,6 +63,11 @@ io.on('connection', socket => {
 
     // Socket send updated score
     io.emit('updatedPlayerStatus', players)
+  })
+
+  socket.on('updatePlayerReady', function(payload) {
+    playerready++
+    io.emit('countPlayerReady', playerready)
   })
 
   // Socket reset player attributes

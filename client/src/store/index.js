@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userReady: 0,
     username: '',
     welcoming: '',
     players: []
@@ -23,12 +24,18 @@ export default new Vuex.Store({
     },
     setUsername (state, payload) {
       state.username = payload
+    },
+    setuUerReady (state, payload) {
+      state.userReady = payload
     }
   },
   actions: {
     SOCKET_serverGreeting ({ commit }, payload) {
       commit('setUsername', payload.username)
       router.push({ name: 'Dashboard' })
+    },
+    SOCKET_countPlayerReady ({ commit }, payload) {
+      commit('setuUerReady', payload)
     },
     SOCKET_fullRoom (payload) {
       console.log(payload)
