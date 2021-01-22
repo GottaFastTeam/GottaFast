@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">{{player.username}}</h5>
       <p class="card-text">{{player.status}}</p>
-      <a v-show="player.username === username" v-if="player.status === 'idle'" @click.prevent="updateStatus" type="button" class="btn btn-sm btn-warning">Ready</a>
+      <a v-show="player.username === username" v-if="player.status === 'idle'" @click="play" @click.prevent="updateStatus" type="button" class="btn btn-sm btn-warning">Ready</a>
       <a type="button" v-show="player.username === username" class="btn btn-sm btn-danger text-white ml-1">Leave</a>
     </div>
 </div>
@@ -12,6 +12,9 @@
 
 <script>
 import { mapState } from 'vuex'
+import useSound from 'vue-use-sound'
+import GetReady from '../assets/Music/Get_ready.mp3'
+
 export default {
   name: 'CardUser',
   props: ['player'],
@@ -25,6 +28,12 @@ export default {
     },
     updatePlayerReady () {
       this.$socket.emit('updatePlayerReady', {})
+    }
+  },
+  setup () {
+    const [play] = useSound(GetReady)
+    return {
+      play
     }
   },
   watch: {
