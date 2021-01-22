@@ -16,11 +16,22 @@ export default {
   name: 'CardUser',
   props: ['player'],
   computed: {
-    ...mapState(['username'])
+    ...mapState(['username', 'userReady'])
   },
   methods: {
     updateStatus () {
+      this.updatePlayerReady()
       this.$socket.emit('updateStatus', { username: this.player.username, status: 'ready' })
+    },
+    updatePlayerReady () {
+      this.$socket.emit('updatePlayerReady', {})
+    }
+  },
+  watch: {
+    userReady () {
+      if (this.userReady === 1) {
+        this.$router.push({ name: 'PlayPage' })
+      }
     }
   }
 }
