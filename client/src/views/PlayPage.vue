@@ -36,6 +36,16 @@ export default {
     return {
       play
     }
+  },
+  watch: {
+    players () {
+      this.players.forEach(e => {
+        if (e.score === 300) {
+          // console.log(e.username)
+          this.$router.push({ name: 'WinnerPage' })
+        }
+      })
+    }
   }
 }
 </script>
