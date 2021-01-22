@@ -5,7 +5,7 @@
       <h5 class="card-title">{{player.username}}</h5>
       <p class="card-text">{{player.status}}</p>
       <a v-show="player.username === username" v-if="player.status === 'idle'" @click.prevent="updateStatus" type="button" class="btn btn-sm btn-warning">Ready</a>
-      <a type="button" class="btn btn-sm btn-danger text-white ml-1">Leave</a>
+      <a type="button" v-show="player.username === username" class="btn btn-sm btn-danger text-white ml-1">Leave</a>
     </div>
 </div>
 </template>

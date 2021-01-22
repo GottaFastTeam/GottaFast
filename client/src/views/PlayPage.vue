@@ -4,7 +4,7 @@
       <img src="../assets/winner4.gif" id="seekImg1">
       <img src="../assets/winner4.gif" id="seekImg2">
       <div id="imageBox" @click.prevent="clickMe">
-        <img src="../assets/kecoa.png" alt="" @click="play">
+        <img :src="image" alt="" @click="play">
       </div>
       <div id="scoreBox" class="text-center">
         <h3>SCORE</h3>
@@ -18,10 +18,17 @@
 import { mapState } from 'vuex'
 import useSound from 'vue-use-sound'
 import oof from '../assets/Music/click-oof.mp3'
+import kecoa from '../assets/kecoa.png'
+import slime from '../assets/slime.png'
+import baphomet from '../assets/baphomet.png'
+import bahamut from '../assets/bahamut.png'
 
 export default {
   name: 'Home',
-  components: {
+  data () {
+    return {
+      image: kecoa
+    }
   },
   computed: {
     ...mapState(['players', 'username'])
@@ -42,6 +49,15 @@ export default {
       this.players.forEach(e => {
         if (e.score === 300) {
           this.$router.push({ name: 'WinnerPage' })
+        } else if (e.score === 200) {
+          this.image = bahamut
+          return this.image
+        } else if (e.score === 150) {
+          this.image = baphomet
+          return this.image
+        } else if (e.score === 50) {
+          this.image = slime
+          return this.image
         }
       })
     }
