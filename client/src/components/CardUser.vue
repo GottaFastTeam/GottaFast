@@ -32,6 +32,7 @@ export default {
     logout () {
       localStorage.clear()
       this.$socket.emit('logout', { username: this.player.username })
+      this.$store.commit('setUsername', localStorage.username)
       this.$router.push({ name: 'Login' })
     }
   },
