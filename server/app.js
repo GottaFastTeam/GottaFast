@@ -70,7 +70,12 @@ io.on('connection', socket => {
   })
 
   socket.on('updatePlayerReady', function() {
-    playerready++
+    if (playerready === 4) {
+      playerready = 1
+    } else {
+      playerready++
+    }
+    
     io.emit('countPlayerReady', playerready)
   })
 
