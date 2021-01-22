@@ -3,21 +3,19 @@
     <div id="playPageBox">
       <img src="../assets/winner4.gif" id="seekImg1">
       <img src="../assets/winner4.gif" id="seekImg2">
-      <div id="imageBox">
+      <div id="imageBox" @click.prevent="clickMe">
         <img src="../assets/kecoa.png" alt="" @click="play">
       </div>
-      <div id="scoreBox">
+      <div id="scoreBox" class="text-center">
         <h3>SCORE</h3>
-        <p>tommy: 20</p>
-        <p>samiun: 20</p>
-        <p>tommy: 20</p>
-        <p>tommy: 20</p>
+        <p v-for="( player,i ) in players" :key="i">{{player.username}}: {{player.score}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import useSound from 'vue-use-sound'
 import oof from '../assets/Music/click-oof.mp3'
 
@@ -25,12 +23,28 @@ export default {
   name: 'Home',
   components: {
   },
+  computed: {
+    ...mapState(['players', 'username'])
+  },
   methods: {
+    clickMe () {
+      this.$socket.emit('updateScorePlayer', { username: this.username, score: 10 })
+    }
   },
   setup () {
     const [play] = useSound(oof)
     return {
       play
+    }
+  },
+  watch: {
+    players () {
+      this.players.forEach(e => {
+        if (e.score === 300) {
+          // console.log(e.username)
+          this.$router.push({ name: 'WinnerPage' })
+        }
+      })
     }
   }
 }
