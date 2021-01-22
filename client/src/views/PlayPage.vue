@@ -6,24 +6,25 @@
       <div id="imageBox">
         <img src="../assets/kecoa.png" alt="" @click="play">
       </div>
-      <div id="scoreBox">
+      <div id="scoreBox" class="text-center">
         <h3>SCORE</h3>
-        <p>tommy: 20</p>
-        <p>samiun: 20</p>
-        <p>tommy: 20</p>
-        <p>tommy: 20</p>
+        <p v-for="( player,i ) in players" :key="i">{{player.username}}: {{player.score}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import useSound from 'vue-use-sound'
 import oof from '../assets/Music/click-oof.mp3'
 
 export default {
   name: 'Home',
   components: {
+  },
+  computed: {
+    ...mapState(['players'])
   },
   methods: {
   },
