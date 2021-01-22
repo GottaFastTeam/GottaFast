@@ -45,9 +45,9 @@ io.on('connection', socket => {
   socket.on('updateScorePlayer', function(payload) {
     // find user updated score
     const findPlayer = players.filter(el => el.username === payload.username);
-
+    
     // update score player
-    findPlayer[0].score = payload.score;
+    findPlayer[0].score += payload.score;
 
     // Socket send updated score
     io.emit('updatedScore', players)
@@ -66,7 +66,12 @@ io.on('connection', socket => {
   })
 
   socket.on('updatePlayerReady', function(payload) {
-    playerready++
+    if (playerready === 4) {
+      playerready = 1
+    } else {
+      playerready++
+    }
+    
     io.emit('countPlayerReady', playerready)
   })
 

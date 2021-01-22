@@ -22,6 +22,12 @@ export default new Vuex.Store({
     SOCKET_updatedPlayerStatus (state, payload) {
       state.players = payload
     },
+    SOCKET_updatedScore (state, payload) {
+      state.players = payload
+    },
+    SOCKET_resetPlayer (state, payload) {
+      state.players = payload
+    },
     setUsername (state, payload) {
       state.username = payload
     },
