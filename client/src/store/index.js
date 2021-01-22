@@ -16,16 +16,7 @@ export default new Vuex.Store({
     SOCKET_init (state, payload) {
       state.welcoming = payload.messages[0].message
     },
-    SOCKET_messageNewPlayer (state, payload) {
-      state.players = payload
-    },
-    SOCKET_updatedPlayerStatus (state, payload) {
-      state.players = payload
-    },
-    SOCKET_updatedScore (state, payload) {
-      state.players = payload
-    },
-    SOCKET_resetPlayer (state, payload) {
+    SOCKET_updatePlayers (state, payload) {
       state.players = payload
     },
     setUsername (state, payload) {
@@ -37,6 +28,7 @@ export default new Vuex.Store({
   },
   actions: {
     SOCKET_serverGreeting ({ commit }, payload) {
+      localStorage.setItem('username', payload.username)
       commit('setUsername', payload.username)
       router.push({ name: 'Dashboard' })
     },

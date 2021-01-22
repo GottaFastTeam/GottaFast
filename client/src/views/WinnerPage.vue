@@ -1,8 +1,8 @@
 <template>
   <div id="winnerPage">
-      <div id="winnerBox" class="text-center">
+      <div id="winnerBox" class="text-center mt-5">
           <img src="../assets/winner1.gif" id="imageWinner1">
-          <h1 id="winnerName">{{ username }}</h1>
+          <h1 id="winnerName" v-for="(names,i) in winnerName" :key="i" >{{i++}}.{{names.username}} </h1>
           <div class="container">
             <a @click="play" class="button">Play Again</a>
           </div>
@@ -18,7 +18,10 @@ import { mapState } from 'vuex'
 export default {
   name: 'WinnerPage',
   computed: {
-    ...mapState(['username'])
+    ...mapState(['username', 'players']),
+    winnerName () {
+      return this.players.filter(winner => winner.score)
+    }
   },
   methods: {
     play () {
