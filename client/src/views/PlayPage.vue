@@ -49,13 +49,14 @@ export default {
       this.players.forEach(e => {
         if (e.score === 300) {
           this.$router.push({ name: 'WinnerPage' })
-        } else if (e.score === 200) {
+        }
+        if (e.score === 200 && e.username === this.username) {
           this.image = bahamut
           return this.image
-        } else if (e.score === 150) {
+        } else if (e.score === 150 && e.username === this.username) {
           this.image = baphomet
           return this.image
-        } else if (e.score === 50) {
+        } else if (e.score === 50 && e.username === this.username) {
           this.image = slime
           return this.image
         }
