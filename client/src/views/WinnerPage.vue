@@ -1,8 +1,8 @@
 <template>
   <div id="winnerPage">
-      <div id="winnerBox">
+      <div id="winnerBox" class="text-center">
           <img src="../assets/winner1.gif" id="imageWinner1">
-          <h1 id="winnerName">NAME</h1>
+          <h1 id="winnerName">{{ username }}</h1>
           <div class="container">
             <a @click="play" class="button">Play Again</a>
           </div>
@@ -13,9 +13,18 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex'
 export default {
-  name: 'WinnerPage'
+  name: 'WinnerPage',
+  computed: {
+    ...mapState(['username'])
+  },
+  methods: {
+    play () {
+      this.$socket.emit('resetGame', { username: this.username })
+      this.$router.push({ name: 'Dashboard' })
+    }
+  }
 }
 </script>
 
