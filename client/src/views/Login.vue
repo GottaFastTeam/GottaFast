@@ -9,6 +9,9 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    <div class="float-right">
+      <small>in game {{ players.length }} of 4</small>
+    </div>
   </div>
 </template>
 

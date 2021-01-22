@@ -2,7 +2,7 @@
   <div id="winnerPage">
       <div id="winnerBox" class="text-center mt-5">
           <img src="../assets/winner1.gif" id="imageWinner1">
-          <h1 id="winnerName" v-for="(names,i) in winnerName" :key="i" >{{names.username}} </h1>
+          <h1 id="winnerName" v-for="(names,i) in winnerName" :key="i" >{{ i+1 }} - {{names.username}} : {{names.score}}</h1>
           <div class="container">
             <a @click="play" class="button">Play Again</a>
           </div>
@@ -38,9 +38,10 @@ export default {
   }
   #winnerPage {
     margin-left: 30%;
+    margin-bottom: 30px;
     border-radius: 25px;
     width: 500px;
-    height: 500px;
+    height: 720px;
     background-color: #3581B8;
     box-shadow: 0 40px 100px rgba(51, 49, 49, 0.8);
   }

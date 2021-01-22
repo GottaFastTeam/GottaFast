@@ -49,8 +49,7 @@ export default {
       this.players.forEach(e => {
         if (e.score === 300) {
           this.$router.push({ name: 'WinnerPage' })
-        }
-        if (e.score === 200 && e.username === this.username) {
+        } else if (e.score === 200 && e.username === this.username) {
           this.image = bahamut
           return this.image
         } else if (e.score === 150 && e.username === this.username) {
