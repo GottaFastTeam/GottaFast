@@ -13,9 +13,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
-  name: 'WinnerPage'
+  name: 'WinnerPage',
+  computed: {
+    ...mapState(['players'])
+  }
 }
 </script>
 
