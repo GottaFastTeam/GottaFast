@@ -10,7 +10,7 @@ const messages = [{
 }]
 
 // list of players
-const players = []
+let players = []
 let playerready = 0
 // example data object player
 // payload = {
@@ -87,6 +87,14 @@ io.on('connection', socket => {
     findPlayer[0].score = 0;
 
     // send reset data player
+    io.emit('updatePlayers', players);
+  })
+
+  socket.on('logout', function(payload) {
+    const newPlayers =  players.filter(el => el.username !== payload.username)
+    players = newPlayers
+
+    // updated players
     io.emit('updatePlayers', players);
   })
 })
